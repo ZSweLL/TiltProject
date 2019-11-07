@@ -8,4 +8,13 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/TileGame.unity
     guid: 890adc4db8c544fbdb5edcd345c924fd
+  - enabled: 1
+    path: Assets/Level2.unity
+    guid: 393e7fffeafa4477d9046b4176f75456
+  - enabled: 1
+    path: Assets/Level3.unity
+    guid: abacbd996f1624b0dbddbc213bbae18f
+  - enabled: 1
+    path: Assets/Level4.unity
+    guid: 3dafc1ef0945842ccaef687cd8d1301a
   m_configObjects: {}

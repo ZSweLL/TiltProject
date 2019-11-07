@@ -5,6 +5,10 @@ TagManager:
   serializedVersion: 2
   tags:
   - Coin
+  - Finish4
+  - Finish3
+  - Finish2
+  - Finish1
   layers:
   - Default
   - TransparentFX

@@ -1,7 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-
+using UnityEngine.SceneManagement;
 public class MarbleMovement : MonoBehaviour
 {
 
@@ -12,6 +12,10 @@ public class MarbleMovement : MonoBehaviour
 
     public bool debug = true;
     public float speed = 10;
+
+    public bool canJump;
+
+    public GameObject BtnJump;
 
     public Transform arrowIndicator;
     // Start is called before the first frame update
@@ -30,7 +34,7 @@ public class MarbleMovement : MonoBehaviour
 
     public float jumpSpeed = 5f;
     public void Jump() {
-        if(isGrounded) {
+        if(isGrounded && canJump) {
             rb.AddForce(Vector3.up * jumpSpeed, ForceMode.Impulse);
         }
     }
@@ -46,15 +50,28 @@ public class MarbleMovement : MonoBehaviour
     }
 
     public int score = 0;
-    bool canJump = false;
 
     void OnTriggerEnter(Collider other) {
         if(other.gameObject.name == "JumpPowerUp") {
             canJump = true;
+            BtnJump.SetActive(canJump);
+            Destroy(other.gameObject);
         }
         if(other.gameObject.CompareTag("Coin")) {
             score += 250;
             Destroy(other.gameObject);
+        }
+        if(other.gameObject.CompareTag("Finish1")) {
+            LoadLevelTwo();
+        }
+        if(other.gameObject.CompareTag("Finish2")) {
+            LoadLevelThree();
+        }
+        if(other.gameObject.CompareTag("Finish3")) {
+            LoadLevelFour();
+        }
+        if(other.gameObject.CompareTag("Finish4")) {
+            LoadLevelOne();
         }
     }
 
@@ -91,5 +108,18 @@ public class MarbleMovement : MonoBehaviour
 
     void FixedUpdate() {
         rb.AddForce(dir * speed);
+    }
+
+    void LoadLevelOne() {
+        SceneManager.LoadScene("TileGame");
+    }
+    void LoadLevelTwo() {
+        SceneManager.LoadScene("Level2");
+    }
+    void LoadLevelThree() {
+        SceneManager.LoadScene("Level3");
+    }
+    void LoadLevelFour() {
+        SceneManager.LoadScene("Level4");
     }
 }
