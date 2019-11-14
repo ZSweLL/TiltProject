@@ -9,6 +9,8 @@ TagManager:
   - Finish3
   - Finish2
   - Finish1
+  - Finish5
+  - Finish6
   layers:
   - Default
   - TransparentFX

@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
+using TMPro;
 public class MarbleMovement : MonoBehaviour
 {
 
@@ -9,6 +10,8 @@ public class MarbleMovement : MonoBehaviour
 
     Vector3 calibratedDir;
     Rigidbody rb;
+
+    public TextMeshPro scoreText;
 
     public bool debug = true;
     public float speed = 10;
@@ -24,6 +27,7 @@ public class MarbleMovement : MonoBehaviour
         rb = this.GetComponent<Rigidbody>();
         Calibrate();
         startPos = this.transform.position;
+        scoreText = GameObject.Find("ScoreText").GetComponent<TextMeshPro>();
     }
 
     public void Calibrate() {
@@ -59,6 +63,7 @@ public class MarbleMovement : MonoBehaviour
         }
         if(other.gameObject.CompareTag("Coin")) {
             score += 250;
+            scoreText.text = "Score = " + score;
             Destroy(other.gameObject);
         }
         if(other.gameObject.CompareTag("Finish1")) {
@@ -71,6 +76,12 @@ public class MarbleMovement : MonoBehaviour
             LoadLevelFour();
         }
         if(other.gameObject.CompareTag("Finish4")) {
+            LoadLevelFive();
+        }
+        if(other.gameObject.CompareTag("Finish5")) {
+            LoadLevelSix();
+        }
+        if(other.gameObject.CompareTag("Finish6")) {
             LoadLevelOne();
         }
     }
@@ -121,5 +132,11 @@ public class MarbleMovement : MonoBehaviour
     }
     void LoadLevelFour() {
         SceneManager.LoadScene("Level4");
+    }
+    void LoadLevelFive() {
+        SceneManager.LoadScene("Level5");
+    }
+    void LoadLevelSix() {
+        SceneManager.LoadScene("Level6");
     }
 }
