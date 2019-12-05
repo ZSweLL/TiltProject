@@ -6,6 +6,9 @@ EditorBuildSettings:
   serializedVersion: 2
   m_Scenes:
   - enabled: 1
+    path: Assets/MainMenu.unity
+    guid: 4b41af25ec0421d4b8c1c202753cafdf
+  - enabled: 1
     path: Assets/TileGame.unity
     guid: 890adc4db8c544fbdb5edcd345c924fd
   - enabled: 1
@@ -23,4 +26,16 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Level6.unity
     guid: 48ac825dfe46d564eb709cc7a9569473
+  - enabled: 1
+    path: Assets/Level7.unity
+    guid: 051c2cf9f17ff3241b4caed44d3444b1
+  - enabled: 1
+    path: Assets/Level8.unity
+    guid: 74ac7b2157c5b7047aa80a6f9f20e7a3
+  - enabled: 1
+    path: Assets/Level9.unity
+    guid: c3393f36d564b904bbf31c40d6f3a753
+  - enabled: 1
+    path: Assets/Level10.unity
+    guid: 2ceb938c66cf6894899e026ab4280244
   m_configObjects: {}

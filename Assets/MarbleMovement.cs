@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 using TMPro;
+[RequireComponent(typeof(AudioSource))]
 public class MarbleMovement : MonoBehaviour
 {
 
@@ -21,6 +22,10 @@ public class MarbleMovement : MonoBehaviour
     public GameObject BtnJump;
 
     public Transform arrowIndicator;
+
+    AudioSource aud;
+    public AudioClip sound;
+    public AudioClip[] sounds;
     // Start is called before the first frame update
     void Start()
     {
@@ -28,6 +33,7 @@ public class MarbleMovement : MonoBehaviour
         Calibrate();
         startPos = this.transform.position;
         scoreText = GameObject.Find("ScoreText").GetComponent<TextMeshPro>();
+        aud = this.GetComponent<AudioSource>();
     }
 
     public void Calibrate() {
@@ -60,11 +66,13 @@ public class MarbleMovement : MonoBehaviour
             canJump = true;
             BtnJump.SetActive(canJump);
             Destroy(other.gameObject);
+            aud.PlayOneShot(sounds[Random.Range(0, sounds.Length)]);
         }
         if(other.gameObject.CompareTag("Coin")) {
             score += 250;
-            scoreText.text = "Score = " + score;
+            scoreText.text = "Score: " + score;
             Destroy(other.gameObject);
+            aud.PlayOneShot(sounds[Random.Range(0, sounds.Length)]);
         }
         if(other.gameObject.CompareTag("Finish1")) {
             LoadLevelTwo();
@@ -82,7 +90,19 @@ public class MarbleMovement : MonoBehaviour
             LoadLevelSix();
         }
         if(other.gameObject.CompareTag("Finish6")) {
-            LoadLevelOne();
+            LoadLevelSeven();
+        }
+        if(other.gameObject.CompareTag("Finish7")) {
+            LoadLevelEight();
+        }
+        if(other.gameObject.CompareTag("Finish8")) {
+            LoadLevelNine();
+        }
+        if(other.gameObject.CompareTag("Finish9")) {
+            LoadLevelTen();
+        }
+        if(other.gameObject.CompareTag("Finish10")) {
+            LoadLevelZero();
         }
     }
 
@@ -138,5 +158,20 @@ public class MarbleMovement : MonoBehaviour
     }
     void LoadLevelSix() {
         SceneManager.LoadScene("Level6");
+    }
+    void LoadLevelSeven() {
+        SceneManager.LoadScene("Level7");
+    }
+    void LoadLevelEight() {
+        SceneManager.LoadScene("Level8");
+    }
+    void LoadLevelNine() {
+        SceneManager.LoadScene("Level9");
+    }
+    void LoadLevelTen() {
+        SceneManager.LoadScene("Level10");
+    }
+    void LoadLevelZero() {
+        SceneManager.LoadScene("MainMenu");
     }
 }
